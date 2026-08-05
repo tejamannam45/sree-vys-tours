@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sree VYS Tours and Travels
 
-## Getting Started
+Car booking website for **Sree VYS Tours and Travels** (Vijayawada).
 
-First, run the development server:
+- Brand: Safe Journey, Happy Memories · 24×7 · Safe · Reliable · Comfortable
+- Popular routes & prices (same as [akhiltravel.com](https://akhiltravel.com) reference):
+  - Vijayawada ⇌ Hyderabad — ₹6,000/- one way
+  - Vijayawada ⇌ Guntur — ₹1,700/- one way · ₹2,500/- round trip
+  - Vijayawada ⇌ Tirupati — ₹10,500/- one way
+  - Vijayawada ⇌ Vizag — ₹8,500/- one way
+- Fleet package rates for Audi Q7, Kia Carnival, Mercedes C-Class (same reference pricing)
+- Booking form emails the business and opens WhatsApp with the trip details
+
+## Quick start
 
 ```bash
+cd /Users/ravi/sree-vys-tours
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Email setup (Gmail)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Bookings always work with **WhatsApp**. To also send automatic emails:
 
-## Learn More
+1. Create a Gmail [App Password](https://myaccount.google.com/apppasswords) for `sreevystoursandtravels@gmail.com`
+2. Copy `.env.local.example` → `.env.local`
+3. Fill in:
 
-To learn more about Next.js, take a look at the following resources:
+```env
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=sreevystoursandtravels@gmail.com
+SMTP_PASS=your-16-char-app-password
+BOOKING_TO_EMAIL=sreevystoursandtravels@gmail.com
+SMTP_FROM=sreevystoursandtravels@gmail.com
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+When a customer books:
+1. Admin email goes to `BOOKING_TO_EMAIL`
+2. If the customer entered an email, they get a confirmation
+3. Success screen offers **Send on WhatsApp** with the full booking text
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contact (from business flyer)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Phone: 9949947440 · 7013480371
+- Email: sreevystoursandtravels@gmail.com
+- Location: Vijayawada, Krishna, AP
