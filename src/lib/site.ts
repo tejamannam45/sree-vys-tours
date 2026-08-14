@@ -43,12 +43,71 @@ export const SERVICES = [
   },
 ] as const;
 
+/** Real temples & tourist places for hero + routes (AP / Telangana) */
+export const PLACES = [
+  {
+    id: "kanaka-durga",
+    name: "Kanaka Durga Temple",
+    place: "Vijayawada",
+    image: "/images/vijayawada-temple.jpg",
+  },
+  {
+    id: "prakasam",
+    name: "Prakasam Barrage",
+    place: "Vijayawada",
+    image: "/images/vijayawada-barrage.jpg",
+  },
+  {
+    id: "undavalli",
+    name: "Undavalli Caves",
+    place: "Near Vijayawada",
+    image: "/images/undavalli.jpg",
+  },
+  {
+    id: "tirumala",
+    name: "Tirumala Temple",
+    place: "Tirupati",
+    image: "/images/route-tirupati.jpg",
+  },
+  {
+    id: "tirumala-gate",
+    name: "Tirumala Entrance",
+    place: "Tirupati",
+    image: "/images/tirumala-entrance.jpg",
+  },
+  {
+    id: "charminar",
+    name: "Charminar",
+    place: "Hyderabad",
+    image: "/images/route-hyd.jpg",
+  },
+  {
+    id: "rk-beach",
+    name: "RK Beach",
+    place: "Vizag",
+    image: "/images/route-vizag.jpg",
+  },
+  {
+    id: "vizag-road",
+    name: "Beach Road",
+    place: "Vizag",
+    image: "/images/vizag-beach-road.jpg",
+  },
+  {
+    id: "kondaveedu",
+    name: "Kondaveedu Fort",
+    place: "Guntur",
+    image: "/images/route-guntur.jpg",
+  },
+] as const;
+
 /** Popular routes & prices aligned with akhiltravel.com reference */
 export const ROUTES = [
   {
     id: "hyd",
     from: "Vijayawada",
     to: "Hyderabad",
+    landmark: "Charminar",
     oneWay: 6000,
     roundTrip: null as number | null,
     carType: "Sedan (4+1)",
@@ -56,11 +115,14 @@ export const ROUTES = [
     distanceKm: 300,
     inclusions: "Fuel + Driver + Toll",
     extraKmCharge: 22,
+    image: "/images/route-hyd.jpg",
+    blurb: "Charminar & city drop — fuel, driver & toll included",
   },
   {
     id: "guntur",
     from: "Vijayawada",
     to: "Guntur",
+    landmark: "Kondaveedu Fort",
     oneWay: 1700,
     roundTrip: 2500,
     carType: "Sedan (4+1)",
@@ -68,11 +130,14 @@ export const ROUTES = [
     distanceKm: 40,
     inclusions: "Fuel + Driver + Toll",
     extraKmCharge: 22,
+    image: "/images/route-guntur.jpg",
+    blurb: "Quick hop to Guntur — one way or round trip",
   },
   {
     id: "tirupati",
     from: "Vijayawada",
     to: "Tirupati",
+    landmark: "Tirumala Temple",
     oneWay: 10500,
     roundTrip: null as number | null,
     carType: "Sedan (4+1)",
@@ -80,11 +145,14 @@ export const ROUTES = [
     distanceKm: 400,
     inclusions: "Fuel + Driver + Toll",
     extraKmCharge: 22,
+    image: "/images/route-tirupati.jpg",
+    blurb: "Tirumala darshan travel, door to door",
   },
   {
     id: "vizag",
     from: "Vijayawada",
     to: "Vizag",
+    landmark: "RK Beach",
     oneWay: 8500,
     roundTrip: null as number | null,
     carType: "Sedan (4+1)",
@@ -92,6 +160,8 @@ export const ROUTES = [
     distanceKm: 350,
     inclusions: "Fuel + Driver + Toll",
     extraKmCharge: 22,
+    image: "/images/route-vizag.jpg",
+    blurb: "RK Beach & Vizag city getaway",
   },
 ] as const;
 
@@ -100,6 +170,7 @@ export const FLEET = [
   {
     id: "audi-q7",
     name: "AUDI Q7",
+    tagline: "Flagship SUV for VIP & family runs",
     packages: [
       { label: "4Hrs · 40Km", price: 11000 },
       { label: "8Hrs · 80Km", price: 22000 },
@@ -116,6 +187,7 @@ export const FLEET = [
   {
     id: "kia-carnival",
     name: "KIA Carnival Limousine Plus",
+    tagline: "Spacious lounge seats for groups",
     packages: [
       { label: "4Hrs · 40Km", price: 6000 },
       { label: "8Hrs · 80Km", price: 12000 },
@@ -132,6 +204,7 @@ export const FLEET = [
   {
     id: "benz-c220",
     name: "Mercedes Benz C Class 220 D",
+    tagline: "Executive sedan for business travel",
     packages: [
       { label: "4Hrs · 40Km", price: 7000 },
       { label: "8Hrs · 80Km", price: 13500 },

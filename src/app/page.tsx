@@ -1,4 +1,5 @@
 import { BookingForm } from "@/components/BookingForm";
+import { HeroPlaces } from "@/components/HeroPlaces";
 import {
   BUSINESS,
   FLEET,
@@ -6,6 +7,7 @@ import {
   SERVICES,
   formatInr,
 } from "@/lib/site";
+import Image from "next/image";
 
 const SERVICE_ICONS: Record<string, string> = {
   car: "🚗",
@@ -41,48 +43,15 @@ export default function Home() {
       </header>
 
       <main id="top">
-        <section className="hero">
-          <div className="hero__inner">
-            <div>
-              <p className="hero__eyebrow">
-                {BUSINESS.serviceHours} · {BUSINESS.values}
-              </p>
-              <h1>
-                SREE <span className="accent">VYS</span>
-              </h1>
-              <p className="hero__tagline">{BUSINESS.tagline}</p>
-              <div className="hero__actions">
-                <a className="btn-primary" href="#book">
-                  Book your ride
-                </a>
-                <a className="btn-secondary" href="#routes">
-                  View routes & prices
-                </a>
-              </div>
-              <div className="hero__meta">
-                <span>{BUSINESS.location}</span>
-                <span>
-                  <a href={`tel:+91${BUSINESS.phones[0]}`}>
-                    +91 {BUSINESS.phones[0]}
-                  </a>
-                </span>
-                <span>
-                  <a href={`tel:+91${BUSINESS.phones[1]}`}>
-                    +91 {BUSINESS.phones[1]}
-                  </a>
-                </span>
-              </div>
-            </div>
-          </div>
-        </section>
+        <HeroPlaces />
 
         <section className="section" id="services">
           <div className="section__inner">
             <p className="section__label">What we offer</p>
             <h2>Cars for every kind of journey</h2>
             <p className="section__lead">
-              From quick city hops to outstation temple runs — safe drivers,
-              reliable vehicles, and clear prices.
+              From city hops to temple darshan and beach trips — safe drivers,
+              reliable cars, clear prices.
             </p>
             <div className="services-grid">
               {SERVICES.map((service) => (
@@ -103,52 +72,68 @@ export default function Home() {
         <section className="section routes-section" id="routes">
           <div className="section__inner">
             <p className="section__label">Popular routes</p>
-            <h2>Vijayawada destinations with transparent pricing</h2>
+            <h2>Temples & tourist places we cover</h2>
             <p className="section__lead">
-              Upfront sedan rates for the most requested outstation corridors —
-              fuel, driver, and toll included.
+              Charminar, Tirumala, RK Beach, Kondaveedu — real destinations with
+              upfront sedan prices.
             </p>
             <div className="routes-grid">
               {ROUTES.map((route) => (
                 <article key={route.id} className="route-card">
-                  <h3>
-                    {route.from} ⇌ {route.to}
-                  </h3>
-                  <p className="route-price">
-                    {formatInr(route.oneWay)}
-                    <span>One way drop</span>
-                  </p>
-                  <ul className="route-meta">
-                    <li>
-                      <span>Car type</span>
-                      <strong>{route.carType}</strong>
-                    </li>
-                    <li>
-                      <span>Travel time</span>
-                      <strong>{route.travelTime}</strong>
-                    </li>
-                    <li>
-                      <span>Distance</span>
-                      <strong>{route.distanceKm} Km</strong>
-                    </li>
-                    <li>
-                      <span>Inclusions</span>
-                      <strong>{route.inclusions}</strong>
-                    </li>
-                    <li>
-                      <span>Extra km</span>
-                      <strong>₹{route.extraKmCharge}/-</strong>
-                    </li>
-                    {route.roundTrip != null && (
+                  <div className="route-card__media">
+                    <Image
+                      src={route.image}
+                      alt={`${route.landmark}, ${route.to}`}
+                      fill
+                      className="route-card__img"
+                      sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 25vw"
+                    />
+                    <div className="route-card__place">
+                      <strong>{route.landmark}</strong>
+                      <span>{route.to}</span>
+                    </div>
+                  </div>
+                  <div className="route-card__body">
+                    <h3>
+                      {route.from} ⇌ {route.to}
+                    </h3>
+                    <p className="route-card__blurb">{route.blurb}</p>
+                    <p className="route-price">
+                      {formatInr(route.oneWay)}
+                      <span>One way drop</span>
+                    </p>
+                    <ul className="route-meta">
                       <li>
-                        <span>Round trip</span>
-                        <strong>{formatInr(route.roundTrip)}</strong>
+                        <span>Car type</span>
+                        <strong>{route.carType}</strong>
                       </li>
-                    )}
-                  </ul>
-                  <a className="btn-primary" href="#book">
-                    Book this route
-                  </a>
+                      <li>
+                        <span>Travel time</span>
+                        <strong>{route.travelTime}</strong>
+                      </li>
+                      <li>
+                        <span>Distance</span>
+                        <strong>{route.distanceKm} Km</strong>
+                      </li>
+                      <li>
+                        <span>Inclusions</span>
+                        <strong>{route.inclusions}</strong>
+                      </li>
+                      <li>
+                        <span>Extra km</span>
+                        <strong>₹{route.extraKmCharge}/-</strong>
+                      </li>
+                      {route.roundTrip != null && (
+                        <li>
+                          <span>Round trip</span>
+                          <strong>{formatInr(route.roundTrip)}</strong>
+                        </li>
+                      )}
+                    </ul>
+                    <a className="btn-primary" href="#book">
+                      Book this route
+                    </a>
+                  </div>
                 </article>
               ))}
             </div>
@@ -160,36 +145,41 @@ export default function Home() {
             <p className="section__label">Our fleet</p>
             <h2>Premium cars with package rates</h2>
             <p className="section__lead">
-              Choose hourly packages or full-day rent for luxury travel in and
-              around Vijayawada.
+              Hourly packages and full-day rent for weddings, VIP, and family
+              travel.
             </p>
             <div className="fleet-grid">
               {FLEET.map((car) => (
                 <article key={car.id} className="fleet-card">
-                  <h3>{car.name}</h3>
-                  <ul className="fleet-packages">
-                    {car.packages.map((pkg) => (
-                      <li key={pkg.label}>
-                        <span>{pkg.label}</span>
-                        <strong>{formatInr(pkg.price)}</strong>
+                  <div className="fleet-card__body">
+                    <h3>{car.name}</h3>
+                    <p className="fleet-card__tag">{car.tagline}</p>
+                    <ul className="fleet-packages">
+                      {car.packages.map((pkg) => (
+                        <li key={pkg.label}>
+                          <span>{pkg.label}</span>
+                          <strong>{formatInr(pkg.price)}</strong>
+                        </li>
+                      ))}
+                      <li>
+                        <span>12 Hrs rent</span>
+                        <strong>{formatInr(car.rent12h)}</strong>
                       </li>
-                    ))}
-                    <li>
-                      <span>12 Hrs rent</span>
-                      <strong>{formatInr(car.rent12h)}</strong>
-                    </li>
-                    <li>
-                      <span>24 Hrs rent</span>
-                      <strong>{formatInr(car.rent24h)}</strong>
-                    </li>
-                  </ul>
-                  <div className="fleet-extra">
-                    <span>Driver bata: {formatInr(car.driverBata)}</span>
-                    <span>{car.mileage}</span>
-                    <span>
-                      Extra hour {formatInr(car.extraHour)} · Extra km ₹
-                      {car.extraKm}/-
-                    </span>
+                      <li>
+                        <span>24 Hrs rent</span>
+                        <strong>{formatInr(car.rent24h)}</strong>
+                      </li>
+                    </ul>
+                    <div className="fleet-extra">
+                      <span>Driver bata: {formatInr(car.driverBata)}</span>
+                      <span>
+                        Extra hour {formatInr(car.extraHour)} · Extra km ₹
+                        {car.extraKm}/-
+                      </span>
+                    </div>
+                    <a className="btn-primary" href="#book">
+                      Reserve this car
+                    </a>
                   </div>
                 </article>
               ))}
@@ -202,8 +192,8 @@ export default function Home() {
             <p className="section__label">Book now</p>
             <h2>Request your car</h2>
             <p className="section__lead">
-              Submit the form and we will email the team. You can also send the
-              same booking on WhatsApp in one tap.
+              Submit the form — we email the team, and you can WhatsApp the same
+              booking in one tap.
             </p>
             <div className="booking-shell">
               <BookingForm />
