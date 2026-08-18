@@ -71,7 +71,7 @@ export default function Home() {
 
         <section className="section" id="services">
           <div className="section__inner">
-            <p className="section__label">Why choose our travels
+            <p className="section__label">About Us
             </p>
             <h2>Why choose our travels</h2>
             <p className="section__lead">
