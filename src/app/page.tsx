@@ -69,6 +69,17 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="section" id="services">
+          <div className="section__inner">
+            <p className="section__label">Why choose our travels
+            </p>
+            <h2>Why choose our travels</h2>
+            <p className="section__lead">
+            Sree VYS Tours & Travels bring the comfort, reliability and premium travel experience enjoyed by corporate travelers to everyone. With 8 years of trusted service and countless successful journeys across 50+ cities, our disciplined and experienced drivers ensure every trip is safe, comfortable and enjoyable, with a special focus on women's safety. Whether you're traveling for leisure or on a devotional pilgrimage, our team also guides you with valuable recommendations on must-visit temples and spiritual destinations, making every journey memorable from start to finish.
+            </p>
+          </div>
+        </section>
+
         <section className="section routes-section" id="routes">
           <div className="section__inner">
             <p className="section__label">Popular routes</p>
