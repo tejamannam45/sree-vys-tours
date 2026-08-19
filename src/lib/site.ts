@@ -8,6 +8,7 @@ export const BUSINESS = {
   email: "sreevystoursandtravels@gmail.com",
   phones: ["9885302999", "9949947440"] as const,
   whatsapp: "9885302999",
+  websiteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://sreevystours.com",
 } as const;
 
 export const SERVICES = [

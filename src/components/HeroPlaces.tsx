@@ -52,6 +52,7 @@ export function HeroPlaces() {
           {BUSINESS.serviceHours} · {BUSINESS.values}
         </p>
         <h1>
+          <span className="sr-only">{BUSINESS.name} - Best Car Travels & Taxi Service in Vijayawada | </span>
           SREE <span className="accent">VYS</span>
         </h1>
         <p className="hero__tagline">{BUSINESS.tagline}</p>
